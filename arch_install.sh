@@ -90,6 +90,7 @@ fi
 	arch-chroot /mnt /bin/bash -x << _EOF_
 	passwd user
 	user
+	user
 	_EOF_
 
 
