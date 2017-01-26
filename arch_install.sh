@@ -69,16 +69,6 @@ then
 
 	cp /etc/X11/xinit/xinitrc /home/user/.xinitrc
 
-	arch-chroot /mnt /bin/bash -x << _EOF_
-	passwd
-	root
-	root
-	_EOF_
-
-	arch-chroot /mnt /bin/bash -x << _EOF_
-	passwd user
-	user
-	_EOF_
 
 	#видео и аудиодрайверы
 	pacman -S bash-completion xorg-server xorg-xinit xorg-utils xorg-server-utils mesa xf86-video-nouveau alsa-lib alsa-utils alsa-oss alsa-plugins ttf-liberation ttf-droid --noconfirm
@@ -91,6 +81,16 @@ then
 	
 fi
 
+	arch-chroot /mnt /bin/bash -x << _EOF_
+	passwd
+	root
+	root
+	_EOF_
+
+	arch-chroot /mnt /bin/bash -x << _EOF_
+	passwd user
+	user
+	_EOF_
 
 
 umount -R /mnt/boot
