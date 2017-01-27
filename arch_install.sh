@@ -8,6 +8,8 @@ then
 	loadkeys ru
 
 	cfdisk
+
+	_EOF_
 	
 	mkfs.ext2 -L boot /dev/sda1
 	mkfs.ext4 -L root /dev/sda3
