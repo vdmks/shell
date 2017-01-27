@@ -10,7 +10,7 @@ then
 	cfdisk
 
 	_EOF_
-	
+
 	mkfs.ext2 -L boot /dev/sda1
 	mkfs.ext4 -L root /dev/sda3
 	mkfs.ext4 -L home /dev/sda4
@@ -101,3 +101,4 @@ fi
 umount -R /mnt/boot
 umount -R /mnt
 reboot
+_EOF_
