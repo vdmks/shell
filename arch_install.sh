@@ -74,7 +74,7 @@ then
 	pacman -S bash-completion xorg-server xorg-xinit xorg-utils xorg-server-utils mesa xf86-video-nouveau alsa-lib alsa-utils alsa-oss alsa-plugins ttf-liberation ttf-droid --noconfirm
 
 	#DE и софт
-	pacman -S  --noconfirm
+	pacman -S lxde chromium sublime-text evince fbreader lxterminal screenfetch htop youtube-dl moc gcolor2 pinta unzip unrar p7zip truecrypt gvfs polkit-gnome ntfs-3g gpicview --noconfirm
 
 	systemctl enable dhcpd.service
 
