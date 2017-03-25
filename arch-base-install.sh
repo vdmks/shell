@@ -1,15 +1,17 @@
 #!/bin/bash
-
 #
-#/dev/sda1 200M
-#/dev/sda2 4G
-#/dev/sda3 All available space
+# root:111
+# user:111
 #
-#Install:
-#1) wget https://github.com/vdmks/shell/tarball/master -O - | tar xz 
-#2) cd <dir>
-#3) chmod +x arch-base-install.sh
-#4) ./arch-base-install.sh
+# /dev/sda1 200M
+# /dev/sda2 4G
+# /dev/sda3 All available space
+#
+# Install:
+# 1) wget https://github.com/vdmks/shell/tarball/master -O - | tar xz 
+# 2) cd <dir>
+# 3) chmod +x arch-base-install.sh
+# 4) ./arch-base-install.sh
 #
 
 ischroot=0
@@ -32,13 +34,13 @@ _EOF_
 
 	mkfs.ext2 /dev/sda1
 	mkfs.ext4 /dev/sda3
-
 	mkswap /dev/sda2
-	swapon /dev/sda2
 
 	mount /dev/sda3 /mnt
 	mkdir /mnt/boot
+	mkdir /mnt/home
 	mount /dev/sda1 /mnt/boot
+	swapon /dev/sda2
 
 	pacstrap /mnt base base-devel --noconfirm
 
@@ -93,6 +95,18 @@ then
 
 	# sudo pacman -S chromium screenfetch unzip unrar p7zip pinta shutter evince vlc deadbeef truecrypt --noconfirm
 fi
+
+arch-chroot /mnt /bin/bash -x << _EOF_
+passwd
+111
+111
+_EOF_
+
+arch-chroot /mnt /bin/bash -x << _EOF_
+passwd user
+111
+111
+_EOF_
 
 umount -R /mnt/boot
 umount -R /mnt
