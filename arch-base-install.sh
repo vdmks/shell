@@ -68,13 +68,13 @@ then
 	echo LANG=ru_RU.UTF-8 > /etc/locale.conf
 
 	locale-gen
-
+	
+	pacman -S vim sudo grub-bios --noconfirm
+	
 	useradd -m -g users -G wheel,video -s /bin/bash user
 	
 	sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 	sed -i 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
-
-	pacman -S grub --noconfirm
 
 	grub-install /dev/sda
 	grub-mkconfig -o /boot/grub/grub.cfg
