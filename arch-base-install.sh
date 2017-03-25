@@ -45,7 +45,7 @@ _EOF_
 	genfstab -p /mnt >> /mnt/etc/fstab
 
 	sed -i 's/ischroot=0/ischroot=1/' ./arch-base-install.sh
-	cp ./install_blackarch.sh /mnt/arch-base-install.sh
+	cp ./arch-base-install.sh /mnt/arch-base-install.sh
 
 	arch-chroot /mnt /bin/bash -x << _EOF_
 sh /arch-base-install.sh
