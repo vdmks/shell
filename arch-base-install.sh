@@ -62,7 +62,7 @@ then
 
 	sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 
-	echo LANG=ru_RU.UTF-8 > /etc/locale.conf
+	echo LANG=en_US.UTF-8 > /etc/locale.conf
 
 	locale-gen
 	
@@ -78,7 +78,7 @@ then
 
 	sed -i 's/#Color/Color/' /etc/pacman.conf
 
-	pacman -S bash-completion xorg-server xorg-xinit xorg-utils xorg-server-utils mesa xf86-video-nouveau alsa-lib alsa-utils alsa-oss alsa-plugins xorg-twm xterm xorg-xclock xf86-input-synaptics virtualbox-guest-utils linux-headers --noconfirm
+	pacman -S bash-completion ttf-liberation ttf-droid xorg-server xorg-xinit xorg-utils xorg-server-utils mesa xf86-video-nouveau alsa-lib alsa-utils alsa-oss alsa-plugins xorg-twm xterm xorg-xclock xf86-input-synaptics virtualbox-guest-utils linux-headers --noconfirm
 
 	modprobe -a vboxguest vboxsf vboxvideo
 
