@@ -7,6 +7,13 @@
 #/dev/sda1 200M
 #/dev/sda2 4G
 #/dev/sda3 4G
+#
+#Install:
+#1) wget https://github.com/vdmks/shell/tarball/master -O - | tar xz 
+#2) cd <dir>
+#3) chmod +x arch-base-install.sh
+#4) ./arch-base-install.sh
+#
 
 ischroot=0
 
@@ -74,7 +81,7 @@ then
 
 	sed -i 's/#Color/Color/' /etc/pacman.conf
 
-	pacman -S bash-completion xorg-server xorg-xinit xorg-utils xorg-server-utils mesa xorg-twm xterm xorg-xclock xf86-input-synaptics virtualbox-guest-utils linux-headers --noconfirm
+	pacman -S bash-completion xorg-server xorg-xinit xorg-utils xorg-server-utils mesa xf86-video-nouveau alsa-lib alsa-utils alsa-oss alsa-plugins xorg-twm xterm xorg-xclock xf86-input-synaptics virtualbox-guest-utils linux-headers --noconfirm
 
 	modprobe -a vboxguest vboxsf vboxvideo
 
