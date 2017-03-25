@@ -3,7 +3,7 @@
 #
 #/dev/sda1 200M
 #/dev/sda2 4G
-#/dev/sda3 4G
+#/dev/sda3 All available space
 #
 #Install:
 #1) wget https://github.com/vdmks/shell/tarball/master -O - | tar xz 
