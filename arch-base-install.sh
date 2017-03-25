@@ -1,9 +1,6 @@
 #!/bin/bash
 
 #
-# root: root:111
-# user: user:111
-#
 #/dev/sda1 200M
 #/dev/sda2 4G
 #/dev/sda3 4G
@@ -43,9 +40,9 @@ _EOF_
 	mkdir /mnt/boot
 	mount /dev/sda1 /mnt/boot
 
-	pacstrap -i /mnt base base-devel --noconfirm
+	pacstrap /mnt base base-devel --noconfirm
 
-	genfstab -U -p /mnt >> /mnt/etc/fstab
+	genfstab -p /mnt >> /mnt/etc/fstab
 
 	sed -i 's/ischroot=0/ischroot=1/' ./arch-base-install.sh
 	cp ./install_blackarch.sh /mnt/arch-base-install.sh
@@ -96,19 +93,6 @@ then
 
 	# sudo pacman -S chromium screenfetch unzip unrar p7zip pinta shutter evince vlc deadbeef truecrypt --noconfirm
 fi
-
-
-arch-chroot /mnt /bin/bash -x << _EOF_
-passwd
-111
-111
-_EOF_
-
-arch-chroot /mnt /bin/bash -x << _EOF_
-passwd user
-111
-111
-_EOF_
 
 umount -R /mnt/boot
 umount -R /mnt
