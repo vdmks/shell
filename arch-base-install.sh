@@ -3,9 +3,10 @@
 # root:111
 # user:111
 #
-# /dev/sda1 200M
-# /dev/sda2 4G
-# /dev/sda3 All available space
+# /dev/sda1 200M boot
+# /dev/sda2 4G swap
+# /dev/sda3 10G root
+# /dev/sda4 All available space (Max - 85G)
 #
 # Install:
 # 1) wget https://github.com/vdmks/shell/tarball/master -O - | tar xz 
@@ -25,21 +26,24 @@ label-id: 0xbe58cb3b
 device: /dev/sda
 unit: sectors
 
-/dev/sda1 : start=        2048, size=      409600, type=83, bootable
+/dev/sda1 : start=        2048, size=      409600, type=83
 /dev/sda2 : start=      411648, size=     8388608, type=82
-/dev/sda3 : start=     8800256, size=   200914911, type=83
+/dev/sda3 : start=     8800256, size=     20971520, type=83
+/dev/sda4 : start=     29771776, size=   178257920, type=83
 _EOF_
 
 	sfdisk /dev/sda < create.disks
 
-	mkfs.ext2 /dev/sda1
-	mkfs.ext4 /dev/sda3
-	mkswap /dev/sda2
+	mkfs.ext2 -L boot /dev/sda1
+	mkfs.ext4 -L root /dev/sda3
+	mkfs.ext4 -L home /dev/sda4
+	mkswap -L swap /dev/sda2
 
 	mount /dev/sda3 /mnt
 	mkdir /mnt/boot
 	mkdir /mnt/home
 	mount /dev/sda1 /mnt/boot
+	mount /dev/sda4 /mnt/home
 	swapon /dev/sda2
 
 	pacstrap /mnt base base-devel --noconfirm
@@ -73,14 +77,13 @@ then
 	useradd -m -g users -G wheel,video -s /bin/bash user
 	
 	sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
-	sed -i 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 
 	grub-install /dev/sda
 	grub-mkconfig -o /boot/grub/grub.cfg
 
 	sed -i 's/#Color/Color/' /etc/pacman.conf
 
-	pacman -S bash-completion ttf-liberation ttf-droid screenfetch htop xorg-server xorg-xinit xorg-server-utils mesa xf86-video-nouveau alsa-lib alsa-utils alsa-oss alsa-plugins xf86-input-synaptics virtualbox-guest-utils linux-headers --noconfirm
+	pacman -S bash-completion ttf-liberation ttf-droid moc screenfetch htop xorg-server xorg-xinit xorg-server-utils mesa xf86-video-nouveau alsa-lib alsa-utils alsa-oss alsa-plugins xf86-input-synaptics virtualbox-guest-utils linux-headers --noconfirm
 
 	modprobe -a vboxguest vboxsf vboxvideo
 
