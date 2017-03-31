@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo pacman -S chromium qbittorrent jwm lightdm lxappearance sakura gpicview leafpad nitrogen lxtask htop p7zip unrar ntfs-3g preload prelink --noconfirm
+sudo pacman -S chromium qbittorrent jwm lightdm lxappearance sakura gpicview leafpad nitrogen lxtask wget youtube-dl htop p7zip unrar ntfs-3g preload prelink --noconfirm
 
 systemctl enable lightdm.service
 
