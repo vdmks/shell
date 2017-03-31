@@ -2,7 +2,7 @@
 
 sudo pacman -S lightdm jwm --noconfirm
 
-systemctl enable lightdm.service
+sudo systemctl enable lightdm.service
 
 echo "exec /usr/bin/jwm" >> ~/.xinitrc
 
