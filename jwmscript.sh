@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo pacman -S chromium qbittorrent jwm lightdm lxappearance sakura gpicview leafpad nitrogen lxtask wget youtube-dl htop p7zip unrar ntfs-3g preload prelink --noconfirm
+sudo pacman -S lightdm jwm --noconfirm
 
 systemctl enable lightdm.service
 
@@ -17,3 +17,5 @@ echo "SigLevel = Never" >> /etc/pacman.conf
 echo "Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf
 
 pacman -Sy yaourt
+
+sudo pacman -S chromium qbittorrent lxappearance sakura gpicview leafpad nitrogen lxtask wget youtube-dl htop p7zip unrar ntfs-3g --noconfirm
