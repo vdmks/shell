@@ -16,6 +16,6 @@ echo "[archlinuxfr]" >> /etc/pacman.conf
 echo "SigLevel = Never" >> /etc/pacman.conf
 echo "Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf
 
-pacman -Sy yaourt
+sudo pacman -Sy yaourt --noconfirm
 
-sudo pacman -S chromium qbittorrent lxappearance sakura gpicview leafpad nitrogen lxtask wget youtube-dl htop p7zip unrar ntfs-3g --noconfirm
+sudo pacman -S chromium qbittorrent lxappearance sakura gpicview leafpad nitrogen lxtask wget youtube-dl gvfs p7zip unrar ntfs-3g --noconfirm
